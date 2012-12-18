@@ -42,17 +42,10 @@ public class MainActivity extends Activity implements OnClickListener {
         this.imei = t.getDeviceId();
         this.phoneNumber = t.getLine1Number();
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_connect);
 		Button start = (Button)findViewById(R.id.startButton);
         start.setOnClickListener(this);
-	}
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_main, menu);
-		return true;
-	}
-	
+	}	
 	private void initiateScanner()
 	{
 		IntentIntegrator.initiateScan(this);	
