@@ -1,0 +1,54 @@
+﻿<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+    <div class="container-fluid">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="@Url.Action("Index")"><img src="@Url.Content("~/Images/logo.png")" /></a>
+        <div class="nav-collapse">
+        <ul class="nav">
+			<li class="divider-vertical"></li>
+            <li><a href="@Url.Action("About")">About</a></li>
+			<li class="divider-vertical"></li>
+            <form class="navbar-search pull-left" action="">
+            <input type="text" class="search-query span2" placeholder="Enter PIN" required>
+            </form>
+			<li class="divider-vertical"></li>
+        </ul>
+        <ul class="nav pull-right">
+        <li class="divider-vertical"></li>
+            <li id="loginControl"><a><span id="username"></span></a></li>
+        <li class="divider-vertical"></li>
+        </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+    </div>
+
+    <script type="text/javascript">
+        function displayLogin() {
+            $('#username').html('<img src="@Url.Content("~/Images/login.png")">');
+            $('#loginControl').click(function () {
+                FB.login(function () {
+                    // TODO: On login, create/update user
+                    // -- store ID, email
+                    window.location.reload()
+                });
+            });
+        }
+
+        function displayLogout() {
+            // Attempt to get user info from session db (html 5)
+            FB.api('/me', function (response) {
+                $('#username').html("<i class='icon-lock'></i> " + response.name);
+            }, true);
+            $('#loginControl').click(function () {
+                FB.logout(function () {
+                    window.location = '@Url.Action("Index", "Home")';
+                });
+            });
+        }
+    </script>
+
+</div>

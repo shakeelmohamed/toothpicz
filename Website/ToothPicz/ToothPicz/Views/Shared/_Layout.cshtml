@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <!-- Stylesheets -->
+    <link href="@Url.Content("~/Styles/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Styles/style.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Styles/icon-style.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Styles/bootstrap-responsive.min.css")" rel="stylesheet">
+	<link href="@Url.Content("~/Styles/jquery.fancybox.css")" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script src="@Url.Content("~/Scripts/jquery-1.7.2.min.js")"></script>
+
+    <!-- Website Icons -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <!-- Facebook JS API -->
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '@System.Configuration.ConfigurationManager.AppSettings["Facebook:AppId"]',
+                channel: '@Url.Content("/fbchannel.ashx")',
+                status: true,
+                cookie: true,
+                xfbml: true
+            });
+
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+                    displayLogout();
+                    //var uid = response.authResponse.userID;
+                    //var accessToken = response.authResponse.accessToken;
+                } else if (response.status === 'not_authorized') {
+                    displayLogin()
+                } else {
+                    displayLogin()
+                }
+            });
+        };
+
+        (function (d) {
+            var js, id = 'facebook-jssdk'; if (d.getElementById(id)) { return; }
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            d.getElementsByTagName('head')[0].appendChild(js);
+        }(document));
+    </script>
+
+    <!-- Header -->
+    @Html.Partial("Header")
+    
+    <!-- Page Body -->
+    @RenderBody()
+
+    <!-- Footer -->
+    @Html.Partial("Footer")
+
+    <!-- Scripts -->
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+</body>
+</html>
