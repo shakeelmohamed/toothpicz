@@ -76,20 +76,20 @@ public class MainActivity extends SherlockActivity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	        menu.add("Save")
-	            .setIcon(R.drawable.ic_compose)
-	            .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        menu.add("Save")
+            .setIcon(R.drawable.ic_compose)
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
-	        menu.add("Search")
-	            .setIcon(R.drawable.ic_search)
-	            .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        menu.add("Search")
+            .setIcon(R.drawable.ic_search)
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
-	        menu.add("Refresh")
-	            .setIcon(R.drawable.ic_refresh)
-	            .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        menu.add("Refresh")
+            .setIcon(R.drawable.ic_refresh)
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
-	        return super.onCreateOptionsMenu(menu);
-	    }
+        return super.onCreateOptionsMenu(menu);
+    }
 	
 	@Override
     public void onStart() {
@@ -214,6 +214,6 @@ public class MainActivity extends SherlockActivity {
         }
     }
     public long getUnixTimestamp(){
-		return System.currentTimeMillis() / 1000L; //Figure out how to show the length of time of current session
+		return System.currentTimeMillis() / 1000L;
 	}
 }
