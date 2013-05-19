@@ -104,6 +104,7 @@ public class MainActivity extends SherlockActivity {
     }
     
 	private void updateView() {
+		//TODO: Make this run as an async thread (http://stackoverflow.com/questions/6343166/android-os-networkonmainthreadexception)
         Session session = Session.getActiveSession();
         if (session.isOpened()) {
         	String urlUSERIDprefix = "https://graph.facebook.com/me?";
